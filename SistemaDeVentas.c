@@ -61,6 +61,21 @@ int main(int argc, char *argv[])
             break;
 
         // Agregar caso 4 para la venta del producto
+        case 4: // Venta del producto
+            printf("\nIngrese la cantidad que desea vender: ");
+            fflush(stdin);
+            scanf("%i", &totalVenta);
+
+    if (totalVenta <= 0) {
+        printf("\nCantidad inválida. Debe ser mayor a 0.");
+    } else if (totalVenta > stock) {
+        printf("\nNo hay suficiente stock para realizar la venta.");
+    } else {
+        stock -= totalVenta;
+        printf("\nVenta realizada exitosamente.");
+        printf("\nGanancia obtenida: $%i", totalVenta * precioUn);
+    }
+    break;
 
         case 5: // Salida del programa
             printf("\nMuchas gracias por usar nuestro sistema. Saliendo...");
