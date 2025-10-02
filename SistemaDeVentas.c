@@ -1,10 +1,5 @@
 #include <stdio.h>
 
-/*
-Hace falta colocar validaciones en los ingresos de datos
-           Agregar el caso 4 para vender el producto
-*/
-
 int main(int argc, char *argv[])
 {
 
@@ -60,7 +55,6 @@ int main(int argc, char *argv[])
             scanf("%i", &sumStock);
             break;
 
-        // Agregar caso 4 para la venta del producto
         case 4: // Venta del producto
             printf("\nIngrese la cantidad que desea vender: ");
             fflush(stdin);
