@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     int precioUn, totalVenta, stock, prodId, sumStock; // Variables del programa
     int opc1;                                          // Variables del menu
     char prod[20];                                     // Limitar los caracteres del nombre del producto
-    bool registro = false;
+    bool registro = false;                             // Variable para verificar si hay un producto registrado
 
     // Menu principal del sistema
     do
@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
             printf("Producto registrado exitosamente.");
             break;
 
-        case 2: // Consulta de Stock
-            if (registro == false)
+        case 2:                    // Consulta de Stock
+            if (registro == false) // Verificacion de existencia de producto
             {
                 printf("\nNo se ha registrado ningun producto... Regresando al menu principal...");
             }
@@ -68,8 +68,8 @@ int main(int argc, char *argv[])
             }
             break;
 
-        case 3: // Reabastecimiento de Stock
-            if (registro == false)
+        case 3:                    // Reabastecimiento de Stock
+            if (registro == false) // Verificacion de existencia de producto
             {
                 printf("\nNo se ha registrado ningun producto... Regresando al menu principal...");
                 break;
@@ -88,9 +88,9 @@ int main(int argc, char *argv[])
                 printf("Stock actualizado existosamente. Nuevo Stock: %i", stock);
                 break;
             }
-            break; 
-        case 4: // Venta del producto
-            if (registro == false)
+            break;
+        case 4:                    // Venta del producto
+            if (registro == false) // Verificacion de existencia de producto
             {
                 printf("\nNo se ha registrado ningun producto... Regresando al menu principal...");
                 break;
