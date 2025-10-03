@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-int main(int argc, char *argv[])
+int main() 
 {
 
     // Declaración de variables:
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
                 // Nombre del producto
                 printf("\nIngrese nombre del producto (max 20 carac.): ");
                 fflush(stdin);
-                scanf("%19s", &prod);
+                scanf("%19s", prod);
 
                 // ID del producto
 
