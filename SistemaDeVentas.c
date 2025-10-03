@@ -26,35 +26,43 @@ int main(int argc, char *argv[])
         switch (opc1)
         {
         case 1: // Registro del producto
-            // Nombre del producto
-            printf("\nIngrese nombre del producto (max 20 carac.): ");
-            fflush(stdin);
-            scanf("%19s", &prod);
-
-            // ID del producto
-
-            printf("\nIngrese la ID del producto: ");
-            fflush(stdin);
-            scanf("%i", &prodId);
-
-            // Stock inicial
-            do
+            if (registro == true) // Validar si el prodcuto ya fue registrado
             {
-                printf("\nIngrese la cantidad de stock inicial del producto (debe ser mayor a 0): ");
-                fflush(stdin);
-                scanf("%i", &stock);
-            } while (stock <= 0);
-
-            // Precio unitario
-            do
+                printf("\nProducto ya registrado, no se pueden registrar nuevos productos. Regresando al menu principal...");
+            }
+            else
             {
-                printf("\nIngrese el precio unitario del producto (debe ser mayor a 0): ");
+                // Nombre del producto
+                printf("\nIngrese nombre del producto (max 20 carac.): ");
                 fflush(stdin);
-                scanf("%i", &precioUn);
-            } while (precioUn <= 0);
+                scanf("%19s", &prod);
 
-            registro = true;
-            printf("Producto registrado exitosamente.");
+                // ID del producto
+
+                printf("\nIngrese la ID del producto: ");
+                fflush(stdin);
+                scanf("%i", &prodId);
+
+                // Stock inicial
+                do
+                {
+                    printf("\nIngrese la cantidad de stock inicial del producto (debe ser mayor a 0): ");
+                    fflush(stdin);
+                    scanf("%i", &stock);
+                } while (stock <= 0);
+
+                // Precio unitario
+                do
+                {
+                    printf("\nIngrese el precio unitario del producto (debe ser mayor a 0): ");
+                    fflush(stdin);
+                    scanf("%i", &precioUn);
+                } while (precioUn <= 0);
+
+                registro = true;
+                printf("Producto registrado exitosamente.");
+                break;
+            }
             break;
 
         case 2:                    // Consulta de Stock
