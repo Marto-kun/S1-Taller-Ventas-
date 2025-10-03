@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     // Menu principal del sistema
     do
     {
-        printf("\nSeleccione la opcion deseada");
+        printf("\n\nSeleccione la opcion deseada");
         printf("\n1) Registrar producto");
         printf("\n2) Consultar Stock");
         printf("\n3) Reabastecer Stock");
@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
                 scanf("%i", &precioUn);
             } while (precioUn <= 0);
 
+            registro = true;
             printf("Producto registrado exitosamente.");
             break;
 
@@ -102,24 +103,24 @@ int main(int argc, char *argv[])
                     printf("\nIngrese la cantidad que desea vender: ");
                     fflush(stdin);
                     scanf("%i", &totalVenta);
-
                     if (totalVenta <= 0)
                     {
                         printf("\nCantidad inválida. Debe ser mayor a 0.");
                     }
-                    if (stock < totalVenta)
-                    {
-                        printf("\nNo hay suficiente stock para realizar la venta.");
-                        printf("\nIntentelo de nuevo...");
-                    }
-                    else
-                    {
-                        stock -= totalVenta;
-                        printf("\nVenta realizada exitosamente.");
-                        printf("\nGanancia obtenida: $%i", totalVenta * precioUn);
-                    }
-
                 } while (totalVenta <= 0);
+
+                while (stock < totalVenta)
+                {
+                    printf("\nNo hay suficiente stock para realizar la venta.");
+                    printf("\nIntentelo de nuevo...");
+                    printf("\nIngrese la cantidad que desea vender: ");
+                    fflush(stdin);
+                    scanf("%i", &totalVenta);
+                }
+
+                stock -= totalVenta;
+                printf("\nVenta realizada exitosamente.");
+                printf("\nGanancia obtenida: $%i", totalVenta * precioUn);
 
                 break;
             }
