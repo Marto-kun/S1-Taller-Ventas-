@@ -30,19 +30,29 @@ int main(int argc, char *argv[])
             scanf("%19s", &prod);
 
             // ID del producto
+            
             printf("\nIngrese la ID del producto: ");
             fflush(stdin);
             scanf("%i", &prodId);
 
             // Stock inicial
-            printf("\nIngrese la cantidad de stock inicial del producto: ");
-            fflush(stdin);
-            scanf("%i", &stock);
+            do
+            {
+                printf("\nIngrese la cantidad de stock inicial del producto (debe ser mayor a 0): ");
+                fflush(stdin);
+                scanf("%i", &stock);
+            } while (stock <= 0);
 
-            // Precio unitario
-            printf("\nIngrese el precio unitario del producto (debe ser mayor a 0): ");
-            fflush(stdin);
-            scanf("%i", &precioUn);
+                // Precio unitario
+                do
+            {
+                printf("\nIngrese el precio unitario del producto (debe ser mayor a 0): ");
+                fflush(stdin);
+                scanf("%i", &precioUn);
+            }
+            while (precioUn <= 0)
+                ;
+            printf("Producto registrado exitosamente.");
             break;
 
         case 2: // Consulta de Stock
@@ -50,10 +60,16 @@ int main(int argc, char *argv[])
             break;
 
         case 3: // Reabastecimiento de Stock
-            printf("\nIngrese la cantidad que desea añadir al stock (debe ser mayor a 0): ");
-            fflush(stdin);
-            scanf("%i", &sumStock);
+            do
+            {
+                printf("\nIngrese la cantidad que desea añadir al stock (debe ser mayor a 0): ");
+                fflush(stdin);
+                scanf("%i", &sumStock);
+
+            } while (sumStock <= 0);
+
             stock += sumStock;
+            printf("Stock actualizado existosamente. Nuevo Stock: %i", stock);
             break;
 
         case 4: // Venta del producto
