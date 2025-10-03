@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
             scanf("%19s", &prod);
 
             // ID del producto
-            
+
             printf("\nIngrese la ID del producto: ");
             fflush(stdin);
             scanf("%i", &prodId);
@@ -43,15 +43,13 @@ int main(int argc, char *argv[])
                 scanf("%i", &stock);
             } while (stock <= 0);
 
-                // Precio unitario
-                do
+            // Precio unitario
+            do
             {
                 printf("\nIngrese el precio unitario del producto (debe ser mayor a 0): ");
                 fflush(stdin);
                 scanf("%i", &precioUn);
-            }
-            while (precioUn <= 0)
-                ;
+            } while (precioUn <= 0);
             printf("Producto registrado exitosamente.");
             break;
 
@@ -78,22 +76,26 @@ int main(int argc, char *argv[])
                 printf("\nIngrese la cantidad que desea vender: ");
                 fflush(stdin);
                 scanf("%i", &totalVenta);
+
                 if (totalVenta <= 0)
                 {
                     printf("\nCantidad inválida. Debe ser mayor a 0.");
                 }
-
-                while (stock < totalVenta)
+                if (stock < totalVenta)
                 {
                     printf("\nNo hay suficiente stock para realizar la venta.");
                     printf("\nIntentelo de nuevo...");
-                    break;
                 }
-                stock -= totalVenta;
-                printf("\nVenta realizada exitosamente.");
-                printf("\nGanancia obtenida: $%i", totalVenta * precioUn);
+                else
+                {
+                    stock -= totalVenta;
+                    printf("\nVenta realizada exitosamente.");
+                    printf("\nGanancia obtenida: $%i", totalVenta * precioUn);
+                }
 
             } while (totalVenta <= 0);
+
+            break;
 
         case 5: // Salida del programa
             printf("\nMuchas gracias por usar nuestro sistema. Saliendo...");
