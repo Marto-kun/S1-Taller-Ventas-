@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main(int argc, char *argv[])
 {
@@ -7,6 +8,7 @@ int main(int argc, char *argv[])
     int precioUn, totalVenta, stock, prodId, sumStock; // Variables del programa
     int opc1;                                          // Variables del menu
     char prod[20];                                     // Limitar los caracteres del nombre del producto
+    bool registro = false;
 
     // Menu principal del sistema
     do
@@ -50,51 +52,77 @@ int main(int argc, char *argv[])
                 fflush(stdin);
                 scanf("%i", &precioUn);
             } while (precioUn <= 0);
+
             printf("Producto registrado exitosamente.");
             break;
 
         case 2: // Consulta de Stock
-            printf("\nEl stock actual del producto es: %i", stock);
+            if (registro == false)
+            {
+                printf("\nNo se ha registrado ningun producto... Regresando al menu principal...");
+            }
+            else
+            {
+                printf("\nEl stock actual del producto es: %i", stock);
+                break;
+            }
             break;
 
         case 3: // Reabastecimiento de Stock
-            do
+            if (registro == false)
             {
-                printf("\nIngrese la cantidad que desea añadir al stock (debe ser mayor a 0): ");
-                fflush(stdin);
-                scanf("%i", &sumStock);
+                printf("\nNo se ha registrado ningun producto... Regresando al menu principal...");
+                break;
+            }
+            else
+            {
+                do
+                {
+                    printf("\nIngrese la cantidad que desea añadir al stock (debe ser mayor a 0): ");
+                    fflush(stdin);
+                    scanf("%i", &sumStock);
 
-            } while (sumStock <= 0);
+                } while (sumStock <= 0);
 
-            stock += sumStock;
-            printf("Stock actualizado existosamente. Nuevo Stock: %i", stock);
-            break;
-
+                stock += sumStock;
+                printf("Stock actualizado existosamente. Nuevo Stock: %i", stock);
+                break;
+            }
+            break; 
         case 4: // Venta del producto
-            do
+            if (registro == false)
             {
-                printf("\nIngrese la cantidad que desea vender: ");
-                fflush(stdin);
-                scanf("%i", &totalVenta);
-
-                if (totalVenta <= 0)
+                printf("\nNo se ha registrado ningun producto... Regresando al menu principal...");
+                break;
+            }
+            else
+            {
+                do
                 {
-                    printf("\nCantidad inválida. Debe ser mayor a 0.");
-                }
-                if (stock < totalVenta)
-                {
-                    printf("\nNo hay suficiente stock para realizar la venta.");
-                    printf("\nIntentelo de nuevo...");
-                }
-                else
-                {
-                    stock -= totalVenta;
-                    printf("\nVenta realizada exitosamente.");
-                    printf("\nGanancia obtenida: $%i", totalVenta * precioUn);
-                }
+                    printf("\nIngrese la cantidad que desea vender: ");
+                    fflush(stdin);
+                    scanf("%i", &totalVenta);
 
-            } while (totalVenta <= 0);
+                    if (totalVenta <= 0)
+                    {
+                        printf("\nCantidad inválida. Debe ser mayor a 0.");
+                    }
+                    if (stock < totalVenta)
+                    {
+                        printf("\nNo hay suficiente stock para realizar la venta.");
+                        printf("\nIntentelo de nuevo...");
+                    }
+                    else
+                    {
+                        stock -= totalVenta;
+                        printf("\nVenta realizada exitosamente.");
+                        printf("\nGanancia obtenida: $%i", totalVenta * precioUn);
+                    }
 
+                } while (totalVenta <= 0);
+
+                break;
+            }
             break;
 
         case 5: // Salida del programa
