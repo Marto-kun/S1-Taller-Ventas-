@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 // Codificacion de Funciones
 void ConsultaStock(bool registro, int stock)
 {

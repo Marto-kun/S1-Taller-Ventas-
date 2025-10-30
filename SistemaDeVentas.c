@@ -9,9 +9,9 @@ char prod[20];                                     // Limitar los caracteres del
 bool registro = false;                             // Variable para verificar si hay un producto registrado
 
 // Declaracion de funciones
-void ConsultaStock(registro, stock); // Funcion caso 2
-void Reabastecer(registro, sumStock, stock);   // Funcion caso 3
-void Venta(registro, totalVenta, stock, precioUn);         // Funcion caso 4
+void ConsultaStock(registro, stock);               // Funcion caso 2
+void Reabastecer(registro, sumStock, stock);       // Funcion caso 3
+void Venta(registro, totalVenta, stock, precioUn); // Funcion caso 4
 
 int main()
 {
@@ -94,4 +94,3 @@ int main()
 
     } while (opc1 != 5);
 }
-
