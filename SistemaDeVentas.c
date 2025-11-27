@@ -1,11 +1,21 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include "funciones.h"
 
+typedef struct 
+{
+    int precioUn;
+    int stock;
+    int prodId;
+    char nombre[20];
+} Producto;
+
+
+
 // Declaración de variables:
-int precioUn, totalVenta, stock, prodId, sumStock; // Variables del programa
-int opc1;                                          // Variables del menu
-char prod[20];                                     // Limitar los caracteres del nombre del producto
+int  totalVenta, sumStock; // Variables del programa
+int opc1;                                          // Variables del menu                                    
 bool registro = false;                             // Variable para verificar si hay un producto registrado
 
 // Declaracion de funciones
@@ -15,7 +25,8 @@ void Venta(registro, totalVenta, stock, precioUn); // Funcion caso 4
 
 int main()
 {
-
+    Producto p1;
+    char entrada;
     // Menu principal del sistema
     do
     {
@@ -41,29 +52,30 @@ int main()
                 // Nombre del producto
                 printf("\nIngrese nombre del producto (max 20 carac.): ");
                 fflush(stdin);
-                scanf("%19s", prod);
+                scanf("%19s", entrada);
+                strcpy(p1.nombre, entrada);
 
                 // ID del producto
 
                 printf("\nIngrese la ID del producto: ");
                 fflush(stdin);
-                scanf("%i", &prodId);
+                scanf("%i", &p1.prodId);
 
                 // Stock inicial
                 do
                 {
                     printf("\nIngrese la cantidad de stock inicial del producto (debe ser mayor a 0): ");
                     fflush(stdin);
-                    scanf("%i", &stock);
-                } while (stock <= 0);
+                    scanf("%i", &p1.stock);
+                } while (p1.stock <= 0);
 
                 // Precio unitario
                 do
                 {
                     printf("\nIngrese el precio unitario del producto (debe ser mayor a 0): ");
                     fflush(stdin);
-                    scanf("%i", &precioUn);
-                } while (precioUn <= 0);
+                    scanf("%i", &p1.precioUn);
+                } while (p1.precioUn <= 0);
 
                 registro = true;
                 printf("Producto registrado exitosamente.");
@@ -72,15 +84,15 @@ int main()
             break;
 
         case 2: // Consulta de Stock
-            ConsultaStock(registro, stock);
+            ConsultaStock(registro, p1.stock);
             break;
 
         case 3: // Reabastecimiento de Stock
-            Reabastecer(registro, sumStock, stock);
+            Reabastecer(registro, sumStock, p1.stock);
             break;
 
         case 4: // Venta del producto
-            Venta(registro, totalVenta, stock, precioUn);
+            Venta(registro, totalVenta, p1.stock, p1.precioUn);
             break;
 
         case 5: // Salida del programa
